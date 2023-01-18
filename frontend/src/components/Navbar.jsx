@@ -6,8 +6,17 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
+import { NavLink } from 'react-router-dom'
 
-export default function Navbar() {
+export default function Navbar({setLogin}) {
+  const navitems = [
+    {name: "sales", link:"/products"},
+    {name: "upload", link:"/upload"},
+    {name: "dashboard", link:"/dashboard"},
+    {name: "nearby markets", link:"/products"},
+    {name: "guidlines", link:"/guidlines"},
+    {name: "logout", link:"/login"}
+  ]
   return (
     <div className="Navbar">
     <Box sx={{ flexGrow: 1 }}>
@@ -23,16 +32,17 @@ export default function Navbar() {
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           </Typography>
-          <Button color="inherit"><p className="Navbar-text">Sales</p><Link href="#" underline="none">
-          </Link></Button>
-          <Button color="inherit"><p className="Navbar-text">Upload</p><Link href="#" underline="none">
-          </Link></Button>
-          <Button color="inherit"><p className="Navbar-text">Dashboard</p><Link href="#" underline="none">
-          </Link></Button>
-          <Button color="inherit"><p className="Navbar-text">NearbyMarkets</p><Link href="#" underline="none">
-          </Link></Button>
-          <Button color="inherit"><p className="Navbar-text">Guidelines</p><Link href="#" underline="none">
-          </Link></Button>
+          
+          {navitems.map(e => {
+            if (e.name === "logout") setLogin(false)
+            return(
+              <Button color="inherit">
+                <NavLink to={e.link} underline="none">
+                  <p className="Navbar-text">{e.name}</p>
+                </NavLink>
+              </Button>
+            )
+          })}
         </Toolbar>
       </AppBar>
     </Box>

@@ -3,6 +3,7 @@ import'../styles/Dashboard.css'
 import Button from '@mui/material/Button';
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
+import SalesCard from '../components/SalesCard';
 
 const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText("#ffffff" ),
@@ -43,9 +44,17 @@ function Dashboard(props) {
         </div>
 
         <div className="uploads">
-          <div className="bold-text"> Uploads </div>
+          <div className="bold-text"><h1> Uploads </h1></div>
           <ProductCard/>
           <ProductCard/>
+        </div>
+
+        <div className="bold-text"><h1> Sales </h1></div>
+        <div className="sales">
+          <SalesCard/>
+          <SalesCard/>
+          <SalesCard/>
+
         </div>
           
       </div>

@@ -38,7 +38,7 @@ function Upload() {
 
     return (
         <div className="Upload">
-            <Navbar />
+            {/* <Navbar /> */}
             <div className="Message">
                 <Typography variant="h2" className="largeHeading">Upload your Crop!</Typography>
                 <Typography variant="p" className="mediumHeading">Upload your Crops on -- to get the best Buyers and Results</Typography>
@@ -110,7 +110,7 @@ function Upload() {
                     <Button color="inherit" style={{ "backgroundColor": "#F0F5D1", "width": "60%", "margin": "30px", "borderRadius": "20px" }}><p className="Navbar-text">Upload</p></Button>
                 </form>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }

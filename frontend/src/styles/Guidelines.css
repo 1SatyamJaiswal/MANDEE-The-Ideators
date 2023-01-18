@@ -1,0 +1,58 @@
+:root {
+    --light : #eee;
+    --text : #50734F;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .Navbar {
+    background-color: var(--light);
+  }
+  
+  .Navbar-text {
+    color: var(--text);
+    font-weight: 700;
+    font-size: 15px;
+    font-family: Poppins;
+  }
+  
+  .largeHeading{
+    color: var(--text);
+    font-weight: 700;
+    font-size: 60px;
+    font-family: Poppins;
+    padding: 20px 20px 20px;
+  }
+
+  .infoPallete {
+    font-family: Popins;
+    color: var(--text);
+    padding: 2% 3%;
+    font-size: 20px;
+  }
+
+  .infoPallete b{
+    font-weight: 700;
+  }
+
+  ol {
+    list-style-type: none;
+  }
+
+  ol li{
+    padding: 4px;
+  }
+
+  .mainImg{
+    /* background: url("../../public/images/image 8.png") ; */
+    margin:0% 10%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 95vh;
+    width: 80%;
+  }

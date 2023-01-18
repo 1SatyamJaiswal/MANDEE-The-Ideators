@@ -39,3 +39,31 @@
 .uploads{
   width: 80%;
 }
+
+.sales{
+  display: flex;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+}
+
+.sales-img{
+  height: 270px;
+  width: 270px;
+  border-radius: 6px;
+}
+
+.sales-card-main{
+  margin: 20px 50px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  width: 330px;
+  padding: 30px;
+}
+
+.sales-price{
+  color: rgb(106, 106, 106);
+}
+
+.sales-info{
+
+}
