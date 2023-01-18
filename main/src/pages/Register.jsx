@@ -8,11 +8,10 @@ export default function Register({login}) {
     const nav = useNavigate()
     useEffect(() => {
       if (login) {
-        console.log("kjknjkb");
+        // console.log("kjknjkb");
         nav('/dashboard')
       }
     }, [login])
-
     const [details, setDetails] = useState({
         name: "",
         email: "",
@@ -20,15 +19,14 @@ export default function Register({login}) {
         password: "",
         location: "",
         company: "",
-        type: ""
+        type: "",
+        image: null
     })
 
-    const [image , setImage] = useState("");
-
     const handleImage = (e) => {
-        console.log(e.target.files);
-        setImage(e.target.files[0]);
-        console.log(image);
+        // console.log(e.target.files,'tff');
+        details.imagec= e.target.files[0]
+        // console.log(image,'imgg');
     }
 
     const handleChange = (e) => {
@@ -38,10 +36,15 @@ export default function Register({login}) {
         })
     };
 
-    console.log(details);
+    const submit = () => {
+        console.log(details);
+    }
+
+    // console.log(details);
 
     return (
         <div>
+            {details.image?<img src={URL.createObjectURL(details.image)} alt="" />:null}
             <div className="registerForm" style={{ "border": "2px solid #A0A189", "borderRadius": "10px" }}>
                 <form>
                     <Stack spacing={10} direction="row" justifyContent={"space-evenly"} alignItems={"center"}>
@@ -93,14 +96,18 @@ export default function Register({login}) {
                             <FormControl>
                             <FormLabel id="demo-row-radio-buttons-group-label"><p className="registerText">Select the account type</p></FormLabel>
                                     <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group">
-                                        <FormControlLabel onClick={handleChange} name="type" value="farmer" control={<Radio sx={{ "color": "#A0A189", '&.Mui-checked': { "color": "#A0A189" } }} />} label="Farmer" />
-                                        <FormControlLabel onClick={handleChange} name="type" value="buyer" control={<Radio sx={{ "color": "#A0A189", '&.Mui-checked': { "color": "#A0A189" } }} />} label="Buyer" />
+                                        <FormControlLabel onClick={handleChange} name="type" value="0" control={<Radio sx={{ "color": "#A0A189", '&.Mui-checked': { "color": "#A0A189" } }} />} label="Farmer" /> {/*0-farmer*/}
+                                        <FormControlLabel onClick={handleChange} name="type" value="1" control={<Radio sx={{ "color": "#A0A189", '&.Mui-checked': { "color": "#A0A189" } }} />} label="Buyer" />
                                     </RadioGroup>
                             </FormControl>
                         </div>
                     </Stack>
                     <p className="alreadyRegistered">Already have an account?<a href="#"> Login</a></p>
-                    <Button color="inherit" style={{ "backgroundColor": "#F0F5D1", "width": "60%", "margin": "20px","border": "2px solid #A0A189", "borderRadius": "20px" }}><p className="Navbar-text">Submit</p></Button>
+                    <Button 
+                    color="inherit" onClick={submit}
+                    style={{ "backgroundColor": "#F0F5D1", "width": "60%", "margin": "20px","border": "2px solid #A0A189", "borderRadius": "20px" }}>
+                        <p className="Navbar-text">Submit</p>
+                    </Button>
                 </form>
             </div>
         </div>

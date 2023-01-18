@@ -12,7 +12,7 @@ import { useState } from 'react';
 
 function App() {
   const [type, setType] = useState(0) // 0-farmer 1-buyer
-  const [login, setLogin] = useState(true) 
+  const [login, setLogin] = useState(false) 
   const nav = useNavigate()
 
   return (
