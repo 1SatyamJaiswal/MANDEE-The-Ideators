@@ -6,7 +6,21 @@ import '../styles/Register.css';
 import axios from "axios";
 import FormData from 'form-data'
 
-export default function Register({login}) {
+export default function Register({login,setLogin}) {
+    const [name,setName] = useState("jhsdjg");
+    const [file,setFile] = useState(null);
+    const [location, setLocation] = useState('')
+    const [company, setCompany] = useState('')
+    const [phone, setPhone] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [type, setType] = useState(0)
+
+
+
+    const setimgfile = (e)=>{
+        setFile(e.target.files[0])
+    }
     const nav = useNavigate()
     useEffect(() => {
       if (login) {
@@ -15,45 +29,55 @@ export default function Register({login}) {
       }
     }, [login])
 
-    let data = new FormData();
+    // const submit = () => {
+    //     let fd = new FormData();
+    //     fd.append('image', details.image, details.image.name);
+    //     console.log(details.image,fd)
 
-    const [details, setDetails] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        password: "",
-        location: "",
-        company: "",
-        type: "",
-        image: null
-    })
+    //     let z = URL.createObjectURL(details.image)
+    //     axios.post('http://localhost:4000/', {details,fd})
+    //         .then((response) => {
+    //           //handle success
+    //           console.log(response);
+    //         }).catch((error) => {
+    //           //handle error
+    //           console.log(error);
+    //         });
+          
+       
+    // }
 
-    const handleImage = (e) => {
-        // console.log(e.target.files,'tff');
-        details.image= e.target.files[0]
-        data.append('file', details.image, details.image.name);
+    const submit = async(e)=>{
+        e.preventDefault();
 
-        // console.log(image,'imgg');
-    }
+        var formData = new FormData();
+        formData.append("photo",file)
+        formData.append("name",name);
+        formData.append("email",email)
+        formData.append("password",password)
+        formData.append("type",type)
+        formData.append("location",location)
+        formData.append("phone",phone)
+        formData.append("company",company)
+        // console.log(details)
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setDetails((prev) => {
-            return { ...prev, [name]: value };
-        })
-    };
+        const config = {
+            headers:{
+                "Content-Type":"multipart/form-data"
+            }
+        }
 
-    const submit = () => {
-        console.log(details);
-        axios.post('http://localhost:4000/',{details,data}).then(res => console.log(res)).then(err => console.log(err))
-
+        const res = await axios.post('http://localhost:4000/register',formData,config);
+       
+         // nav('/dashboard')
+        // setLogin(true)
     }
 
     // console.log(details);
 
     return (
         <div>
-            {details.image?<img src={URL.createObjectURL(details.image)} alt="" />:null}
+            {file?<img src={URL.createObjectURL(file)} alt="" />:null}
             <div className="registerForm" style={{ "border": "2px solid #A0A189", "borderRadius": "10px" }}>
                 <form>
                     <Stack spacing={10} direction="row" justifyContent={"space-evenly"} alignItems={"center"}>
@@ -62,19 +86,19 @@ export default function Register({login}) {
                             <Stack spacing={2}>
                                 <div>
                                     <p className="registerText">Name</p>
-                                    <TextField name="name" onChange={handleChange} variant="filled" style={{ "border": "2px solid #A0A189", "borderRadius": "20px", "width": "100%" }} />
+                                    <TextField name="name" onChange={(e) => setName(e.target.value) } variant="filled" style={{ "border": "2px solid #A0A189", "borderRadius": "20px", "width": "100%" }} />
                                 </div>
                                 <div>
                                     <p className="registerText">Email</p>
-                                    <TextField name="email" type="email" onChange={handleChange} style={{ "border": "2px solid #A0A189", "borderRadius": "20px", "width": "100%" }} />
+                                    <TextField name="email" type="email" onChange={(e) => setEmail(e.target.value)} style={{ "border": "2px solid #A0A189", "borderRadius": "20px", "width": "100%" }} />
                                 </div>
                                 <div>
                                     <p className="registerText">Phone</p>
-                                    <TextField name="phone" type="tel" onChange={handleChange} variant="filled" style={{ "border": "2px solid #A0A189", "borderRadius": "20px", "width": "100%" }} />
+                                    <TextField name="phone" type="tel" onChange={(e) => setPhone(e.target.value)} variant="filled" style={{ "border": "2px solid #A0A189", "borderRadius": "20px", "width": "100%" }} />
                                 </div>
                                 <div>
                                     <p className="registerText">Password</p>
-                                    <TextField name="password" type="password" onChange={handleChange} variant="filled" style={{ "border": "2px solid #A0A189", "borderRadius": "20px", "width": "100%" }} />
+                                    <TextField name="password" type="password" onChange={(e) => setPassword(e.target.value)} variant="filled" style={{ "border": "2px solid #A0A189", "borderRadius": "20px", "width": "100%" }} />
                                 </div>
                             </Stack>
                         </div>
@@ -82,22 +106,22 @@ export default function Register({login}) {
                         <div>
                         <Stack alignItems="center" spacing={2} className="uploadPersonalImage">
                         <IconButton aria-label="upload picture" component="label" style={{"color":"#50734F"}}>
-                        <input hidden onChange={handleImage} accept="image/*" type="file" />
+                        <input hidden onChange={setimgfile} accept="image/*" type="file"name="photo" />
                         <AddAPhotoIcon />
                         </IconButton>
                         <Button variant="contained" component="label" color="inherit" style={{"backgroundColor": "#F0F5D1","width": "100%","margin":"20px", "borderRadius":"20px"}}>
                         <p className='registerTextImage'>Your Image</p>
-                        <input hidden onChange={handleImage} accept="image/*" multiple type="file" />
+                        <input onChange={setimgfile} accept="image/*" type="file" name="photo"/>
                         </Button>
                         </Stack>
                         <Stack spacing={2}>
                                 <div>
                                     <p className="registerText">Location</p>
-                                    <TextField name="location" onChange={handleChange} variant="filled" style={{ "border": "2px solid #A0A189", "borderRadius": "20px", "width": "100%" }} />
+                                    <TextField name="location" onChange={(e) => setLocation(e.target.value)} variant="filled" style={{ "border": "2px solid #A0A189", "borderRadius": "20px", "width": "100%" }} />
                                 </div>
                                 <div>
                                     <p className="registerText">Company</p>
-                                    <TextField name="company" onChange={handleChange} style={{ "border": "2px solid #A0A189", "borderRadius": "20px", "width": "100%" }} />
+                                    <TextField name="company" onChange={(e) => setCompany(e.target.value)} style={{ "border": "2px solid #A0A189", "borderRadius": "20px", "width": "100%" }} />
                                 </div>
                         </Stack>
                         </div>
@@ -105,8 +129,8 @@ export default function Register({login}) {
                             <FormControl>
                             <FormLabel id="demo-row-radio-buttons-group-label"><p className="registerText">Select the account type</p></FormLabel>
                                     <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group">
-                                        <FormControlLabel onClick={handleChange} name="type" value="0" control={<Radio sx={{ "color": "#A0A189", '&.Mui-checked': { "color": "#A0A189" } }} />} label="Farmer" /> {/*0-farmer*/}
-                                        <FormControlLabel onClick={handleChange} name="type" value="1" control={<Radio sx={{ "color": "#A0A189", '&.Mui-checked': { "color": "#A0A189" } }} />} label="Buyer" />
+                                        <FormControlLabel onClick={(e) => setType(e.target.value)} name="type" value="0" control={<Radio sx={{ "color": "#A0A189", '&.Mui-checked': { "color": "#A0A189" } }} />} label="Farmer" /> {/*0-farmer*/}
+                                        <FormControlLabel onClick={(e) => setType(e.target.value)} name="type" value="1" control={<Radio sx={{ "color": "#A0A189", '&.Mui-checked': { "color": "#A0A189" } }} />} label="Buyer" />
                                     </RadioGroup>
                             </FormControl>
                         </div>

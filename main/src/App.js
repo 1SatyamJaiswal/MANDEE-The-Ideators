@@ -12,7 +12,7 @@ import { useState } from 'react';
 
 function App() {
   const [type, setType] = useState(0) // 0-farmer 1-buyer
-  const [login, setLogin] = useState(true) 
+  const [login, setLogin] = useState(false) 
   const nav = useNavigate()
 
   return (
@@ -24,8 +24,8 @@ function App() {
       <Routes>
         <Route path='/dashboard' element={<Dashboard type={type}/>}/>
         <Route path='/upload' element={<Upload type={type}/>}/>
-        <Route path='/register' element={<Register  login={login}/>}/>
-        <Route path='/login' element={<Login login={login}/>}/>
+        <Route path='/register' element={<Register  login={login} setLogin={setLogin}/>}/>
+        <Route path='/login' element={<Login login={login} setLogin={setLogin}/>}/>
         <Route path='/guidlines' element={<Guidelines/>}/>
         <Route path='/products' element={<Products/>}/>
         

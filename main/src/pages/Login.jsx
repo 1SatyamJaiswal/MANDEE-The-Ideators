@@ -3,11 +3,10 @@ import { useNavigate } from "react-router-dom";
 import {TextField,Button,Stack} from '@mui/material';
 import '../styles/Register.css';
 
-export default function Register({login}) {
+export default function Register({login,setLogin}) {
     const nav = useNavigate()
     useEffect(() => {
       if (login) {
-        console.log("kjknjkb");
         nav('/dashboard')
       }
     }, [login])
@@ -24,6 +23,11 @@ export default function Register({login}) {
             return { ...prev, [name]: value };
         })
     };
+
+    const submit =  () => {
+        nav('/dashboard')
+        setLogin(true)
+    }
 
     console.log(details);
 
@@ -47,10 +51,13 @@ export default function Register({login}) {
                         </div>
                         <div>
                             <div className="loginImage"></div>
-                            <p style={{color: "white"}}>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                            {/* <p style={{color: "white"}}>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p> */}
                         </div>
                     </Stack>
-                    <Button color="inherit" style={{ "backgroundColor": "#F0F5D1", "width": "60%", "margin": "20px","border": "2px solid #A0A189", "borderRadius": "20px" }}><p className="Navbar-text">Login</p></Button>
+                    <Button color="inherit" onClick={submit}
+                     style={{ "backgroundColor": "#F0F5D1", "width": "60%", "margin": "20px","border": "2px solid #A0A189", "borderRadius": "20px" }}>
+                        <p className="Navbar-text">Login</p>
+                    </Button>
                 </form>
             </div>
         </div>
