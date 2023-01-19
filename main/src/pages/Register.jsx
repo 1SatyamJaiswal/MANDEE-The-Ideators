@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";import {TextField,FormControlLabe
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import IconButton from '@mui/material/IconButton';
 import '../styles/Register.css';
+import axios from "axios";
+import FormData from 'form-data'
 
 export default function Register({login}) {
     const nav = useNavigate()
@@ -12,6 +14,9 @@ export default function Register({login}) {
         nav('/dashboard')
       }
     }, [login])
+
+    let data = new FormData();
+
     const [details, setDetails] = useState({
         name: "",
         email: "",
@@ -25,7 +30,9 @@ export default function Register({login}) {
 
     const handleImage = (e) => {
         // console.log(e.target.files,'tff');
-        details.imagec= e.target.files[0]
+        details.image= e.target.files[0]
+        data.append('file', details.image, details.image.name);
+
         // console.log(image,'imgg');
     }
 
@@ -38,6 +45,8 @@ export default function Register({login}) {
 
     const submit = () => {
         console.log(details);
+        axios.post('http://localhost:4000/',{details,data}).then(res => console.log(res)).then(err => console.log(err))
+
     }
 
     // console.log(details);
