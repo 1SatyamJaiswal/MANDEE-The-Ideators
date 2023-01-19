@@ -2,6 +2,7 @@ import '../styles/Products.css'
 import Button from '@mui/material/Button';
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
+import Buy from './Buy';
 
 const ColorButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText("#ffffff" ),
@@ -22,30 +23,39 @@ const ColorButton = styled(Button)(({ theme }) => ({
 }));
 
 
-function ProductCard(props) {
-
+function ProductCard({name,company,picture,price,location,contact,type}) {
+    
 
 
     return (
         <div className='product-card'>
             {/* <div className=''> */}
-                <img className='product-image' src="https://5.imimg.com/data5/ST/QW/MY-38700875/fresh-wheat-crop-500x500.jpg"  />
+                <img className='product-image' src={require(`../uploads/${picture}`)}  />
             {/* </div> */}
             <div className='product-detail'>
-                <div className='product-title'>Basmati Rice, Harpal Farms</div> 
-                <div className='product-info'>Rs. 200 per kg</div>
+                <div className='product-title'>{name}, {company}</div> 
+                <div className='product-info'>Rs. {price} per kg</div>
                 <div className='product-info'>Up for sale 3hrs ago</div>
-                <div className='product-info'>Ludhiana, Punjab</div>
-                <div className='product-info'>Contact No: 93280265</div>
-                <div className='product-info'>Mail: ixsb.as@axab.com</div>
+                <div className='product-info'>{location}</div>
+                <div className='product-info'>Contact No: {contact}</div>
                 <div className='product-buttons'>
-                <ColorButton variant="contained" >Buy Now</ColorButton>
-                <ColorButton variant="contained" >Connect</ColorButton>
+                {type == 1? 
+                <>
+                <Buy price={price}/>
                 <ColorButton variant="contained" >Add to Cart</ColorButton>
+                </>
+                :
+                <>
+                <ColorButton variant="contained" >Edit</ColorButton>
+                <ColorButton variant="contained" >Delete</ColorButton>
+                </>
+                }
+                {/* <ColorButton variant="contained" >Connect</ColorButton> */}
                 </div>
             </div>
         </div>
     );
 }
+                {/* <ColorButton variant="contained" >Connect</ColorButton> */}
 
 export default ProductCard;

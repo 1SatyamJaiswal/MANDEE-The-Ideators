@@ -1,12 +1,12 @@
 import React, { useState,useEffect } from "react";
-import { useNavigate } from "react-router-dom";import {TextField,FormControlLabel,Button,Stack,FormControl,RadioGroup,FormLabel,Radio} from '@mui/material';
+import { useNavigate,Link } from "react-router-dom";import {TextField,FormControlLabel,Button,Stack,FormControl,RadioGroup,FormLabel,Radio} from '@mui/material';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import IconButton from '@mui/material/IconButton';
 import '../styles/Register.css';
 import axios from "axios";
 import FormData from 'form-data'
 
-export default function Register({login,setLogin}) {
+export default function Register({login,setLogin,setProfile,profile}) {
     const [name,setName] = useState("jhsdjg");
     const [file,setFile] = useState(null);
     const [location, setLocation] = useState('')
@@ -29,24 +29,6 @@ export default function Register({login,setLogin}) {
       }
     }, [login])
 
-    // const submit = () => {
-    //     let fd = new FormData();
-    //     fd.append('image', details.image, details.image.name);
-    //     console.log(details.image,fd)
-
-    //     let z = URL.createObjectURL(details.image)
-    //     axios.post('http://localhost:4000/', {details,fd})
-    //         .then((response) => {
-    //           //handle success
-    //           console.log(response);
-    //         }).catch((error) => {
-    //           //handle error
-    //           console.log(error);
-    //         });
-          
-       
-    // }
-
     const submit = async(e)=>{
         e.preventDefault();
 
@@ -59,7 +41,7 @@ export default function Register({login,setLogin}) {
         formData.append("location",location)
         formData.append("phone",phone)
         formData.append("company",company)
-        // console.log(details)
+        console.log(file)
 
         const config = {
             headers:{
@@ -68,9 +50,26 @@ export default function Register({login,setLogin}) {
         }
 
         const res = await axios.post('http://localhost:4000/register',formData,config);
-       
-         // nav('/dashboard')
+        // setProfile({
+        //     name: name,
+        //     email: email,
+        //     password: password,
+        //     type: Number(type),
+        //     location: location,
+        //     phone: phone,
+        //     company: company,
+        //     picture: file.name
+        // })
+        // profile.name = name
+        profile.email = email
+        profile.password = password
+        // profile.type = Number(type)
+        // profile.location = location
+        // profile.phone = phone
+        // profile.company = company
+        // profile.picture = file.name
         // setLogin(true)
+        nav('/login')
     }
 
     // console.log(details);
@@ -135,7 +134,7 @@ export default function Register({login,setLogin}) {
                             </FormControl>
                         </div>
                     </Stack>
-                    <p className="alreadyRegistered">Already have an account?<a href="#"> Login</a></p>
+                    <p className="alreadyRegistered">Already have an account?<Link to="/login"> Login</Link></p>
                     <Button 
                     color="inherit" onClick={submit}
                     style={{ "backgroundColor": "#F0F5D1", "width": "60%", "margin": "20px","border": "2px solid #A0A189", "borderRadius": "20px" }}>

@@ -10,7 +10,7 @@ import { NavLink } from 'react-router-dom'
 
 export default function Navbar({setLogin}) {
   const navitems = [
-    {name: "sales", link:"/products"},
+    {name: "sales", link:"/sales"},
     {name: "upload", link:"/upload"},
     {name: "dashboard", link:"/dashboard"},
     {name: "nearby markets", link:"/products"},

@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const connection = require("../db/connection");
 const multer = require("multer");
-const moment = require("moment")
 
 // img storage confing
 var imgconfig = multer.diskStorage({
@@ -33,24 +32,28 @@ var upload = multer({
 
 // register userdata
 router.route('/').post(upload.single("photo"),(req,res)=>{
-  const {name,email,location,password,type,phone,company,} = req.body;
+  const {name,type,location,quantity,uid,company,contact,expire,category,price} = req.body;
   const {filename} = req.file;
 
   console.log(req.body,filename);
 
   try {
       
-      connection.query("INSERT INTO users SET ?",
+      connection.query("INSERT INTO products SET ?",
         {
           name:name,
           location:location,
           company:company,
-          password:password,
-          contact:phone,
-          profile:Number(type),
-          email:email,
-          rating:null,
-          picture:filename
+          contact:contact,
+          mode:Number(type),
+          picture:filename,
+          status: 1,
+          etime: new Date(expire).toUTCString(),
+          utime: new Date().toUTCString(),
+          fid:uid,
+          quantity:quantity,
+          category:category,
+          price:price
         },(err,result)=>{
           if(err){
               console.log(err)
@@ -70,20 +73,35 @@ router.route('/').post(upload.single("photo"),(req,res)=>{
 
 
 // get user data
-router.get("/:email/:password",(req,res)=>{
+router.get("/:category",(req,res)=>{
   try {
       console.log(req.params);
-      const {email,password} = req.params
-      connection.query(`SELECT * FROM users WHERE email="${email}"`,(err,result)=>{
+      const {category} = req.params
+      connection.query(`SELECT * FROM products WHERE category="${category}"`,(err,result)=>{
           if(err){
               console.log("error")
           }else{
-              console.log(result)
-              if (result[0].password === password) {
-                console.log(password,'nn',result[0].password)
-                res.status(201).json({data:{status:'success',info:result[0]}})
-              }
-              else res.json({data:{status:'fail'}})
+            console.log(result)
+            res.status(201).json({data:{status:'success',info:result}})
+          }
+      })
+      // res.send("received")
+  } catch (error) {
+    console.log(error);
+      res.status(421).json({status:422,error})
+  }
+});
+
+router.get("/u/:id",(req,res)=>{
+  try {
+      console.log(req.params);
+      const {id} = req.params
+      connection.query(`SELECT * FROM products WHERE fid="${id}"`,(err,result)=>{
+          if(err){
+              console.log("error")
+          }else{
+            console.log(result)
+            res.status(201).json({data:{status:'success',info:result}})
           }
       })
       // res.send("received")

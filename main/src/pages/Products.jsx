@@ -5,49 +5,80 @@ import Button from '@mui/material/Button';
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import ProductCard from '../components/ProductCard';
-import { useState } from 'react';
 import Sort from '../components/Sort';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
+const ColorButton = styled(Button)(() => ({
+  // color: theme.palette.getContrastText("#ffffff" ),
+  backgroundColor: "#fffffg",
+  '&:hover': {
+    backgroundColor: "#A0A189",
+    color:"#F0F5D1"
 
-const Products = () => {
-  const ColorButton = styled(Button)(({ theme }) => ({
-      // color: theme.palette.getContrastText("#ffffff" ),
-      backgroundColor: "#fffffg",
-      '&:hover': {
-        backgroundColor: "#A0A189",
-        color:"#F0F5D1"
+  },
+  border: "1px solid #A0A189",
+  borderRadius: "30px",
+  color:"#5D885C",
+  fontWeight:"bold",
+  marginLeft:"20px",
+  marginRight:"20px",
+  paddingLeft:"25px",
+  paddingRight:"25px"
+}));
 
-      },
-      border: "1px solid #A0A189",
-      borderRadius: "30px",
-      color:"#5D885C",
-      fontWeight:"bold",
-      marginLeft:"20px",
-      marginRight:"20px",
-      paddingLeft:"25px",
-      paddingRight:"25px"
-  }));
+const Products = ({search,setSearch}) => {
+  const [productlist, setProductlist] = useState(null)
+
+  const updateList = () => {
+    productlist.map(e => {
+      return <ProductCard name={e.name} price={e.price} company={e.company} contact={e.contact} picture={e.picture}/>
+    })
+  }
+
+  useEffect(() => {
+    axios.get(`http://localhost:4000/products/${search}/`).then(res => {
+                  console.log("hello",res);
+        console.log(res.data.data.info);
+        setProductlist(res.data.data.info)
+    })
+    
+  }, [])
+
+  const submit = () => {
+    axios.get(`http://localhost:4000/products/${search}/`).then(res => {
+                  console.log("hello",res);
+        console.log(res.data.data.info);
+        setProductlist(res.data.data.info)
+
+    })
+  }
+  
+ 
 
   return (
     <div className='main'>
         <div className='text-above-search'>Find what you Need!</div>
         <div className='search'>
-          <Search/>
+          <Search setSearch={setSearch}/>
           <div className="buttton-group">
             <ColorButton variant="outlined" >Category</ColorButton>
             <ColorButton variant="outlined" >Location</ColorButton>
-            <ColorButton variant="outlined" >Submit</ColorButton>
+            <ColorButton variant="outlined" onClick={submit}>Submit</ColorButton>
             <Sort/>
           </div>
         </div>
         <div className='product-list'>
+          {/* <ProductCard/>
           <ProductCard/>
           <ProductCard/>
           <ProductCard/>
           <ProductCard/>
-          <ProductCard/>
-          <ProductCard/>
+          <ProductCard/> */}
+          {productlist? productlist.map(e => {
+            return <ProductCard name={e.name} price={e.price} company={e.company} contact={e.contact} picture={e.picture} type={1}/>
+          }):null}
         </div>
 
 

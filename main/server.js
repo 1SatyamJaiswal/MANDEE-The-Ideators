@@ -6,6 +6,8 @@ app.use(require('cors')())
 app.use(express.json())
 app.use("/uploads",express.static("./uploads"))
 app.use('/register',require("./routes/register"))
+app.use('/products',require("./routes/products"))
+// app.use("/uploads",express.static("./uploads"))
 
 let z  = null
 

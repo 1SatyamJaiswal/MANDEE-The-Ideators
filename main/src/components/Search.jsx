@@ -2,7 +2,7 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
-export default function Search() {
+export default function Search({setSearch}) {
   return (
     <Autocomplete
       disablePortal
@@ -10,7 +10,7 @@ export default function Search() {
       options={top100Films}
       sx={{ width: 300 }}
       renderInput={(params) => 
-        <TextField {...params} label="search" 
+        <TextField {...params} label="search" onChange={(e) => setSearch(e.target.value)}
             style={{"width":"500px"}} />} 
       style={{"width":"500px",}}
     />

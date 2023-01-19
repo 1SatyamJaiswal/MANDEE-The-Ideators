@@ -1,0 +1,42 @@
+.card{
+    height: 400px;
+    width: 300px;
+    border: solid 3px #aeb46ec7;
+    border-radius: 10px;
+    margin: 5px 10px;
+}
+
+.item{
+    display: grid;
+    position: relative;
+    justify-content: center;
+    margin: 10px;
+}
+
+.item-image{
+    margin-top: 15px;
+    margin-bottom: 10px;
+    place-content: center;
+    border-radius: 10px;
+    width: 250px;
+    height: 250px;
+}
+
+.item-name{
+    position: absolute;
+    color: #FFFEF0;
+    bottom: 15px;
+    left: 25px;
+}
+
+.info{
+    display: flex;
+    justify-content: space-around;
+    color: #BEBEB8;
+}
+
+.desc{
+    font-size: 15px;
+    color: #5D885C;
+    padding: 5px 10px;  
+}
