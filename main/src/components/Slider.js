@@ -34,7 +34,7 @@ function Slider(props) {
         <ArrowBackIosNewIcon onClick={prevSlide} className="prev" />
         <div className="items">
           {currentProducts.map((product) => (
-            <Card name={product.name}/>
+            <Card name={product.name} image={product.image} desc={product.desc} place={product.place} time={product.time} price={product.price}/>
           ))}
         </div>
         <ArrowForwardIosIcon onClick={nextSlide} className="next" />

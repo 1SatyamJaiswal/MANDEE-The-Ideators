@@ -96,10 +96,11 @@ function Weather() {
           value={searchTerm}
           onChange={handleChange}
         className="search"
+        style={{paddingLeft:"40px"}}
         />
         <button type="submit" id="searchbtn">Search</button>
       </form>
-      <div className="container">
+      <div className="container" >
         <div className="background">
           <div className="Circle1"></div>
           <div className="Circle2"></div>

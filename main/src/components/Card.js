@@ -5,15 +5,15 @@ function Card(props) {
   return (
     <div className="card">
       <div className="item">
-        <img className="item-image" src={require("../images/cauliflower.png")} alt="veg"/>
+        <img className="item-image" src={props.image} alt="veg"/>
         <p className="item-name">{props.name}</p>
       </div>
       <div>
         <div className="info">
-          <p className="info1">Rs.673(8kg)</p>
-          <p className="info2">3.5hrs ago</p>
+          <p className="info1">{props.price}</p>
+          <p className="info2">{props.time}</p>
         </div>
-        <p className="desc">Uploaded by Shetty Farmers<br></br>Karnataka</p>
+        <p className="desc">{props.desc}<br></br>{props.place}</p>
       </div>
     </div>
   );

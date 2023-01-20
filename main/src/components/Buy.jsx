@@ -6,6 +6,7 @@ import Modal from '@mui/material/Modal';
 import { styled } from '@mui/material/styles';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 const style = {
@@ -45,6 +46,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
   }));
 
 export default function Buy({price,details,profile,setProductlist}) {
+  const nav = useNavigate()
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -62,7 +64,9 @@ export default function Buy({price,details,profile,setProductlist}) {
     axios.post('http://localhost:4000/deals',temp)
     axios.post(`http://localhost:4000/products/qty`,{qty:(details.quantity-quantity),pid:details.pid})
     // console.log(profile);
-    setProductlist(null)
+    // setProductlist(null)
+    nav('/dashboard')
+    
   }
 
   return (

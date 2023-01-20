@@ -29,12 +29,12 @@ function Rslider(props) {
 
   return (
     <div className="slider">
-      <p className="r-section">Top Rated Farmers</p>
+      <p className="r-section">{props.title}</p>
       <div className="r-section-items">
         <ArrowBackIosNewIcon onClick={prevSlide} className="prev" />
         <div className="r-items">
           {currentProducts.map((product) => (
-             <Rcard name={product.name}/>
+            <Rcard image={product.image} name={product.name} info={product.info} desc={product.desc} rating={product.rating}/>
           ))}
         </div>
         <ArrowForwardIosIcon onClick={nextSlide} className="next" />

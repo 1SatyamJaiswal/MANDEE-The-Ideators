@@ -48,9 +48,7 @@ export default function Register({login,setLogin,setProfile}) {
                                 </div>
                             </Stack>
                         </div>
-                        <div>
-                            <div className="loginImage"></div>
-                        </div>
+                        <div className="loginImage"></div>
                     </Stack>
                     <p className="alreadyRegistered">Already have an account?<Link to="/register"> Register</Link></p>
                     <Button color="inherit" onClick={submit}

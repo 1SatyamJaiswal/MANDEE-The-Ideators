@@ -1,9 +1,13 @@
+.slider{
+    height: 100vh;
+    padding: 50px 50px;
+}
 
 .section{
-    font-family: Poppins;
+    font-style: bold;
     font-size: 70px;
-    color: #5D885C;  
-    margin-left: 290px; 
+    color: #5D885C; 
+    margin: 0px 0px 10px 20px;
 }
 
 .section-items{
@@ -15,16 +19,12 @@
 
 .prev, .next{
     position: relative;
-    top: 100px;
+    top: 200px;
 }
 
 .items{
     display: flex;
-    /* box-shadow: rgba(240, 245, 209, 1) 10px 39px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; */
+    box-shadow: rgba(240, 245, 209, 1) 10px 39px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     width: 1000px;
-}
-
-.slider {
-    /* border: 3px solid black/; */
 }
 

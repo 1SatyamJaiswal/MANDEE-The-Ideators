@@ -48,7 +48,7 @@
   }
 
   .registerImage{
-    /* background: url("../../public/images/image 21.png") ; */
+    /* background: url("../images/image 21.png") ; */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -57,7 +57,7 @@
   }
 
   .loginImage{
-    /* background: url("../../public/images/image 21.png") ; */
+    background-image: url("../images/cauliflower.png") ;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

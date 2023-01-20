@@ -12,6 +12,7 @@ import Sales from './pages/Sales1';
 import DashboardB from './pages/DashboardB';
 import Nearby from './pages/Nearby';
 import Footer from './components/Footer';
+import CommoditiesData from './pages/CommoditiesData';
 
 
 function App() {
@@ -19,12 +20,12 @@ function App() {
   const [login, setLogin] = useState(false) 
   const [ search,setSearch ] = useState('');
   const [profile, setProfile] = useState({
-    uid: 333,
+    uid: 0,
     company: null,
     email: null,
     password: null,
     contact: null,
-    profile: 1,
+    profile: 0,
     location: null,
     rating: null,
     picture: null,
@@ -34,12 +35,15 @@ function App() {
 
   return (
     <div className="App">
-      {profile.uid?<Navbar setLogin={setLogin}/>:null}
+      {profile.uid != 0?<Navbar setLogin={setLogin}/>:null}
       {/* <Products/> */}
       {/* <Dashboard/> */}
       {/* <Upload/> */}
       <Routes>
-        <Route path='/dashboard' element={profile==0?<Dashboard type={type} profile={profile} setProfile={setProfile}/>:<DashboardB type={type} profile={profile} setProfile={setProfile}/>}/>
+        {profile.profile==0?
+        <Route path='/dashboard' element={<Dashboard type={type} profile={profile} setProfile={setProfile}/>}/>:
+        <Route path='/dashboard' element={<DashboardB type={type} profile={profile} setProfile={setProfile}/>}/> 
+        }
         <Route path='/upload' element={<Upload type={type} profile={profile}/>}/>
         <Route path='/register' element={<Register  login={login} setLogin={setLogin} profile={profile} setProfile={setProfile}/>}/>
         <Route path='/login' element={<Login login={login} setLogin={setLogin} setProfile={setProfile}/>}/>
@@ -47,8 +51,9 @@ function App() {
         <Route path='/products' element={<Products setSearch={setSearch} search={search} profile={profile}/>}/>
         <Route path='/sales' element={<Sales setSearch={setSearch} search={search}/>}/>
         <Route path='/nearby' element={<Nearby/>}/>
+        <Route path='/livemarket' element={<CommoditiesData/>}/>
       </Routes>
-      <Footer/>
+      {login?<Footer/>:null}
     </div>
   );
 }

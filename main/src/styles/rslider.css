@@ -1,8 +1,11 @@
+.slider{
+    height: 100vh;
+}
+
 .r-section{
-    font-family: Poppins;
+    font-style: bold;
     font-size: 70px;
-    color: #5D885C; 
-    margin-left: 290px;  
+    color: #5D885C;   
 }
 
 .r-section-items{

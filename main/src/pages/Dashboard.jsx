@@ -62,7 +62,7 @@ function Dashboard({profile,setProfile}) {
         </div>
 
         <div className="profile">
-          <img src={require(`../uploads/${profile.picture}`)} clasnsName='profile-img' style={profilepic}/>
+          {profile.picture?<img src={require(`../uploads/${profile.picture}`)} clasnsName='profile-img' style={profilepic}/>:null}
           <div className="profile-details">
             <div className='profile-info'>Name: {profile.name}</div>
             <div className='profile-info'>Farm Name: {profile.compay}</div> 

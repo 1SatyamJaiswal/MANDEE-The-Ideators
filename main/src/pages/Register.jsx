@@ -76,7 +76,7 @@ export default function Register({login,setLogin,setProfile,profile}) {
 
     return (
         <div>
-            {file?<img src={URL.createObjectURL(file)} alt="" />:null}
+            {/* {file?<img src={URL.createObjectURL(file)} alt="" />:null} */}
             <div className="registerForm" style={{ "border": "2px solid #A0A189", "borderRadius": "10px" }}>
                 <form>
                     <Stack spacing={10} direction="row" justifyContent={"space-evenly"} alignItems={"center"}>
@@ -110,7 +110,7 @@ export default function Register({login,setLogin,setProfile,profile}) {
                         </IconButton>
                         <Button variant="contained" component="label" color="inherit" style={{"backgroundColor": "#F0F5D1","width": "100%","margin":"20px", "borderRadius":"20px"}}>
                         <p className='registerTextImage'>Your Image</p>
-                        <input onChange={setimgfile} accept="image/*" type="file" name="photo"/>
+                        <input hidden onChange={setimgfile} accept="image/*" type="file" name="photo"/>
                         </Button>
                         </Stack>
                         <Stack spacing={2}>

@@ -1,7 +1,7 @@
 .r-card{
     height: 400px;
     width: 300px;
-    border: solid 3px #EFF3C3;
+    border: solid 3px hsl(65, 67%, 56%);
     border-radius: 10px;
     margin: 5px 10px;
     text-align: center;
@@ -32,7 +32,7 @@
 .farmer-info{
     display: grid;
     padding: 0px 10px;
-    color: rgba(27, 40, 22, 0.5);
+    color: hsl(60, 4%, 50%);
 }
 
 .rating{

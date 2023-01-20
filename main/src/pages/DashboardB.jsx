@@ -29,7 +29,7 @@ function DashboardB({profile,setProfile}) {
   const [saleList, setSaleList] = useState(null)
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/deals/u/${profile.uid}/`).then(res => {
+    axios.get(`http://localhost:4000/deals/b/${profile.uid}`).then(res => {
                   console.log("hello",res);
         console.log(res.data.data.info,'ff');
         setSaleList(res.data.data.info)
@@ -55,7 +55,7 @@ function DashboardB({profile,setProfile}) {
         </div>
 
         <div className="profile">
-          {/* <img src={require(`../uploads/${profile.picture}`)} clasnsName='profile-img' style={profilepic}/> */}
+          {profile.picture?<img src={require(`../uploads/${profile.picture}`)} clasnsName='profile-img' style={profilepic}/>:null}
           <div className="profile-details">
             <div className='profile-info'>Name: {profile.name}</div>
             <div className='profile-info'>Company Name: {profile.compay}</div> 

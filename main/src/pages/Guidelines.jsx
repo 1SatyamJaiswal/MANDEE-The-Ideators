@@ -12,27 +12,27 @@ export default function Guidelines() {
         <div className="guidelinesPage">
             <div className="imageSection">
                 <div className="mainImg">
-                    <img src="https://play-lh.googleusercontent.com/tujTIn2hGCb4oVNNtRH28tuDWDb1Oz3Uc9VL25akbaZ94DG4FBT2nYl4h33TrxkU8w=w600-h300-pc0xffffff-pd" alt=""/>
+                    <img src="https://play-lh.googleusercontent.com/tujTIn2hGCb4oVNNtRH28tuDWDb1Oz3Uc9VL25akbaZ94DG4FBT2nYl4h33TrxkU8w=w600-h300-pc0xffffff-pd" alt="" style={{height:"400px","marginTop":"30px"}}/>
                 </div>
-                <div className="iconsPallete">
+                <div className="iconsPallete" style={{"textDecoration":"none"}}>
                     <div className="imgGroup">
-                    <div className="icons">
-                        <img src={require("../images/weatherIcon.png")} alt="" />
-                        <a href="#Weather">Weather</a>
+                    <div className="icons" style={{marginBottom:"50px"}}>
+                        <img src={require("../images/weatherIcon.png")} alt="" style={{width:"85px",height:"81px", border:"2px solid darkgrey"}}/>
+                        <a href="#Weather" style={{"textDecoration":"none","color":"var(--text"}}>Weather</a>
                     </div>
                     <div className="icons">
-                        <img src={require("../images/newsIcon.png")} alt="" />
-                        <a href="#News">News</a>
+                        <img src={require("../images/newsIcon.png")} alt="" style={{width:"85px",height:"81px", border:"2px solid darkgrey"}}/>
+                        <a href="#News" style={{"textDecoration":"none","color":"var(--text"}}>News</a>
                     </div>
                     </div>
                     <div className="imgGroup">
-                    <div className="icons">
-                        <img src={require("../images/yojanasIcon.png")} alt="" />
-                        <a href="#Yojanas">Yojanas</a>
+                    <div className="icons" style={{marginBottom:"50px"}}>
+                        <img src={require("../images/yojanasIcon.png")} alt="" style={{width:"85px",height:"81px", border:"2px solid darkgrey", }}/>
+                        <a href="#Yojanas" style={{"textDecoration":"none","color":"var(--text"}}>Yojanas</a>
                     </div>
                     <div className="icons">
-                        <img src={require("../images/infoIcon.png")} alt="" />
-                        <a href="#Information">Info</a>
+                        <img src={require("../images/infoIcon.png")} alt="" style={{width:"85px",height:"81px", border:"2px solid darkgrey"}}/>
+                        <a href="#Information" style={{"textDecoration":"none","color":"var(--text"}}>Info</a>
                     </div>
                     </div>
                 </div>
