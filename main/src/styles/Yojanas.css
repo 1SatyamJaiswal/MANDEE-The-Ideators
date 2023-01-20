@@ -1,0 +1,22 @@
+.infoPallete {
+    background: #FFFFFB;
+    border: 1px solid #A0A289;
+    border-radius: 20px;
+    width:600px;
+    font-family: Popins;
+    color: var(--text);
+    padding: 2% 3%;
+    font-size: 20px;
+    margin: 3% auto;
+  }
+  
+  
+  ol {
+    list-style-type: none;
+    
+  }
+  
+  ol li {
+    padding: 4px;
+  }
+  

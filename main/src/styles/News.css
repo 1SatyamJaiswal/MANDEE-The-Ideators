@@ -1,0 +1,13 @@
+.newsBox{
+    color: #50734F;
+    font-weight: 500;
+    font-size: 15px;
+    font-family: Poppins;
+    margin: 10% 0%;
+}
+
+.newsLink{
+    text-decoration: none;
+    color: brown;
+    padding: 10px;
+}

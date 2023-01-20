@@ -32,9 +32,11 @@ export default function Sales({setSearch,search}){
         </div>
         <div className="searchField">
             {/* Find What you Need */}
-        <TextField  label="Search" id="outlined-end-adornment" style={{"backgroundColor": "#rgba(255, 254, 240, 0.5);","width": "60%","margin":"20px", "borderRadius":"20px",border:"2px solid white",color:"white"}}  onChange={(e)=>setSearch(e.target.value)}/>
+        <div style={{display:"flex"}}>
+        <TextField  style={{"backgroundColor": "#rgba(255, 254, 240, 0.5);","width": "60%","margin":"20px", "borderRadius":"20px",border:"2px solid white",color:"white"}}  onChange={(e)=>setSearch(e.target.value)}/>
 
-          <Button variant="outlined" onClick={() => {console.log('jj',search);nav('/products')}}>search</Button>
+          <Button variant="contained" onClick={() => {nav('/products')}} style={{background:"green",height:"50px",marginTop:"20px"}}>search</Button>
+        </div>
         </div>
         </div>
         <div className="sliderSales">

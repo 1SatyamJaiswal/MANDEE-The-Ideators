@@ -7,16 +7,7 @@ app.use(express.json())
 app.use("/uploads",express.static("./uploads"))
 app.use('/register',require("./routes/register"))
 app.use('/products',require("./routes/products"))
+app.use('/deals',require("./routes/deals"))
 // app.use("/uploads",express.static("./uploads"))
-
-let z  = null
-
-app.get('/', (req, res) => res.send(z))
-app.post('/' ,(req,res) => {
-  console.log(req.body)
-  // z = req.body.details.image
-  res.json("okk")
-} )
-
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

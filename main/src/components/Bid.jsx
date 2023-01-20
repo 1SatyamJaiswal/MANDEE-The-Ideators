@@ -44,30 +44,30 @@ const ColorButton = styled(Button)(({ theme }) => ({
   fontSize: "17px"
   }));
 
-export default function Buy({price,details,profile,setProductlist}) {
+export default function Bid({details,profile,setProductlist}) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [quantity, setQuantity] = useState(0)
+  const [price, setPrice] = useState(details.price)
 
-  const buy = ()=> {
+  const bid = ()=> {
     let temp = {
       fid:details.fid,
       bid:profile.uid,
-      quantity:quantity,
+      quantity:details.quantity,
       picture: details.picture,
       price: price,
-      revenue: quantity*price,
+      revenue: details.quantity*price,
     }
     axios.post('http://localhost:4000/deals',temp)
-    axios.post(`http://localhost:4000/products/qty`,{qty:(details.quantity-quantity),pid:details.pid})
+    axios.post(`http://localhost:4000/products/qty`,{qty:0,pid:details.pid})
     // console.log(profile);
     setProductlist(null)
   }
 
   return (
     <div style={{display:"inline-block"}}>
-      <ColorButton onClick={handleOpen} variant="contained">Buy Now</ColorButton>
+      <ColorButton onClick={handleOpen} variant="contained">Bid Now</ColorButton>
       <Modal
         open={open}
         onClose={handleClose}
@@ -76,14 +76,14 @@ export default function Buy({price,details,profile,setProductlist}) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} style={{width:"100px",marginLeft:"30px",height:"40px",fontSize:"20px",paddingLeft:"15px"}}/> Kg
+            Rs.<input type="number" value={price} onChange={(e) => {if(e.target.value > details.price) setPrice(e.target.value)}} style={{width:"80px",marginLeft:"30px",height:"40px",fontSize:"20px",paddingLeft:"15px"}}/> /kg
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             {/* Duis mollis, est non commodo luctus, nisi erat porttitor ligula. */}
-            <h4 style={{"textAlign":"center"}}>Price: Rs.{quantity*price}</h4>
-            <h4 style={{"textAlign":"center"}}>Qty. availaible: {details.quantity-quantity}</h4>
+            <h4 style={{"textAlign":"center"}}>Current Price: Rs.{details.price}</h4>
+            <h4 style={{"textAlign":"center"}}>Qty: {details.quantity}</h4>
             <ButtonGroup orientation="vertical" aria-label="vertical contained button group" variant="text">
-                <Button key="one"  variant="outlined" style={{margin:"40px",width:"100px"}} onClick={buy}>Buy</Button>
+                <Button key="one"  variant="outlined" style={{margin:"40px",width:"100px"}} onClick={bid}>Bid</Button>
             </ButtonGroup>
           </Typography>
         </Box>

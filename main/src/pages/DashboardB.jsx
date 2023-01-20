@@ -24,18 +24,11 @@ const ColorButton = styled(Button)(({ theme }) => ({
   paddingRight:"25px"
 }));
 
-function Dashboard({profile,setProfile}) {
+function DashboardB({profile,setProfile}) {
   const [productlist, setProductlist] = useState(null)
   const [saleList, setSaleList] = useState(null)
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/products/u/${profile.uid}/`).then(res => {
-                  console.log("hello",res);
-        console.log(res.data.data.info);
-        setProductlist(res.data.data.info)
-
-    })
-
     axios.get(`http://localhost:4000/deals/u/${profile.uid}/`).then(res => {
                   console.log("hello",res);
         console.log(res.data.data.info,'ff');
@@ -45,7 +38,7 @@ function Dashboard({profile,setProfile}) {
 
     
     }, [])
-  
+
   const profilepic ={
     width: '200px',
     height: "200px",
@@ -62,10 +55,10 @@ function Dashboard({profile,setProfile}) {
         </div>
 
         <div className="profile">
-          <img src={require(`../uploads/${profile.picture}`)} clasnsName='profile-img' style={profilepic}/>
+          {/* <img src={require(`../uploads/${profile.picture}`)} clasnsName='profile-img' style={profilepic}/> */}
           <div className="profile-details">
             <div className='profile-info'>Name: {profile.name}</div>
-            <div className='profile-info'>Farm Name: {profile.compay}</div> 
+            <div className='profile-info'>Company Name: {profile.compay}</div> 
             <div className='profile-info'>Contact No: {profile.contact}</div>
             <div className='profile-info'>Mail: {profile.email}</div>
             <div className='profile-info'>Current Rating: {profile.rating}</div>
@@ -73,14 +66,14 @@ function Dashboard({profile,setProfile}) {
           </div>
         </div>
 
-        <div className="uploads">
+        {/* <div className="uploads">
           <div className="bold-text"><h1> Uploads </h1></div>
            {productlist?productlist.map(e => {
             return <ProductCard name={e.name} price={e.price} company={e.company} contact={e.contact} picture={e.picture} type={2}/>
           }):<h3 style={{color:"green",marginLeft:"130px"}}> No Products Uploaded yet</h3>} 
-        </div>
+        </div> */}
 
-        <div className="bold-text"><h1> Sales </h1></div>
+        <div className="bold-text"><h1> Items Purcheased </h1></div>
         <div className="sales">
           {saleList?saleList.map(e => {
               return <SalesCard deal={e}/>
@@ -95,4 +88,4 @@ function Dashboard({profile,setProfile}) {
     );
 }
 
-export default Dashboard;
+export default DashboardB;

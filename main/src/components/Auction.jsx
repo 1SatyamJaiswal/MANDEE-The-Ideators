@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Buy from './Buy';
+import Bid from './Bid';
 
 const ColorButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText("#ffffff" ),
@@ -23,7 +24,7 @@ marginRight:"20px",
 }));
 
 
-function ProductCard({name,company,picture,price,location,contact,type,details,profile,setProductlist}) {
+function Auction({name,company,picture,price,location,contact,type,details,profile,setProductlist}) {
     
 
 
@@ -34,14 +35,16 @@ function ProductCard({name,company,picture,price,location,contact,type,details,p
             {/* </div> */}
             <div className='product-detail'>
                 <div className='product-title'>{name}, {company}</div> 
-                <div className='product-info'>Rs. {price} per kg</div>
+                <div style={{background:"rgba(240, 245, 209, 1)", borderRadius:"10px",padding:"6px"}}>IN AUCTION! ( Current Price: Rs.{details.price}/kg)</div>
+                {/* <div className='product-info'>Rs. {price} per kg</div> */}
                 <div className='product-info'>Up for sale 3hrs ago</div>
                 <div className='product-info'>{location}</div>
                 <div className='product-info'>Contact No: {contact}</div>
                 <div className='product-buttons'>
                 {type == 1? 
                 <>
-                <Buy price={price} details={details} profile={profile} setProductlist={setProductlist}/>
+                
+                <Bid price={price} details={details} profile={profile} setProductlist={setProductlist}/>
                 <ColorButton variant="contained" >Add to Cart</ColorButton>
                 </>
                 :
@@ -58,4 +61,4 @@ function ProductCard({name,company,picture,price,location,contact,type,details,p
 }
                 {/* <ColorButton variant="contained" >Connect</ColorButton> */}
 
-export default ProductCard;
+export default Auction;

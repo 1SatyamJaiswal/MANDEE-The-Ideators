@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import ProductCard from '../components/ProductCard';
+import Auction from '../components/Auction';
 import Sort from '../components/Sort';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -28,14 +29,8 @@ const ColorButton = styled(Button)(() => ({
   paddingRight:"25px"
 }));
 
-const Products = ({search,setSearch}) => {
+const Products = ({search,setSearch,profile}) => {
   const [productlist, setProductlist] = useState(null)
-
-  const updateList = () => {
-    productlist.map(e => {
-      return <ProductCard name={e.name} price={e.price} company={e.company} contact={e.contact} picture={e.picture}/>
-    })
-  }
 
   useEffect(() => {
     axios.get(`http://localhost:4000/products/${search}/`).then(res => {
@@ -44,7 +39,7 @@ const Products = ({search,setSearch}) => {
         setProductlist(res.data.data.info)
     })
     
-  }, [])
+  }, [productlist])
 
   const submit = () => {
     axios.get(`http://localhost:4000/products/${search}/`).then(res => {
@@ -77,7 +72,11 @@ const Products = ({search,setSearch}) => {
           <ProductCard/>
           <ProductCard/> */}
           {productlist? productlist.map(e => {
-            return <ProductCard name={e.name} price={e.price} company={e.company} contact={e.contact} picture={e.picture} type={1}/>
+            let x = null
+            if (e.mode == 0) x = <Auction name={e.name} price={e.price} company={e.company} contact={e.contact} picture={e.picture} type={1} details={e} profile={profile} setProductlist={setProductlist}/>
+            else x = <ProductCard name={e.name} price={e.price} company={e.company} contact={e.contact} picture={e.picture} type={1} details={e} profile={profile} setProductlist={setProductlist}/>
+            if (e.quantity > 0)
+              return (x)
           }):null}
         </div>
 

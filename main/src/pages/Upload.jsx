@@ -10,9 +10,11 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 function Upload({profile}) {
+    const nav = useNavigate()
     const [name, setName] = useState('')
     const [category, setCategory] = useState('')
     const [quantity, setQuantity] = useState('')
@@ -53,8 +55,13 @@ function Upload({profile}) {
         }
 
         const res = await axios.post('http://localhost:4000/products',formData,config);
+        let deal = {
+            fid:profile.uid,
+
+        }
+        // axios.put('http://localhost:4000/deals',)
        
-      
+        nav('/sales')
     }
 
     return (

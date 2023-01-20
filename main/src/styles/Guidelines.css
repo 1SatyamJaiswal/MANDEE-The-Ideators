@@ -1,58 +1,86 @@
 :root {
-    --light : #eee;
-    --text : #50734F;
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .Navbar {
-    background-color: var(--light);
-  }
-  
-  .Navbar-text {
-    color: var(--text);
-    font-weight: 700;
-    font-size: 15px;
-    font-family: Poppins;
-  }
-  
-  .largeHeading{
-    color: var(--text);
-    font-weight: 700;
-    font-size: 60px;
-    font-family: Poppins;
-    padding: 20px 20px 20px;
-  }
+  --light: #eee;
+  --text: #50734F;
+}
 
-  .infoPallete {
-    font-family: Popins;
-    color: var(--text);
-    padding: 2% 3%;
-    font-size: 20px;
-  }
+* {
+  margin: 0;
+  padding: 0;
+}
 
-  .infoPallete b{
-    font-weight: 700;
-  }
+.Navbar {
+  background-color: var(--light);
+}
 
-  ol {
-    list-style-type: none;
-  }
+.Navbar-text {
+  color: var(--text);
+  font-weight: 700;
+  font-size: 15px;
+  font-family: Poppins;
+}
 
-  ol li{
-    padding: 4px;
-  }
+.imageSection{
+  margin: 0% auto;
+  text-align: center;
+}
 
-  .mainImg{
-    /* background: url("../../public/images/image 8.png") ; */
-    margin:0% 10%;
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 95vh;
-    width: 80%;
-  }
+.largeHeading {
+  color: var(--text);
+  font-weight: 700;
+  font-size: 60px;
+  font-family: Poppins;
+  padding: 20px 20px 20px;
+}
+
+.icons {
+  text-align: center;
+  box-sizing: border-box;
+  width: 85px;
+  height: 81px;
+  border: 2px solid #A0A289;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+.iconsPallete{
+  margin: 0 auto;
+  display: inline-block;
+  text-align: center;
+}
+
+.imgGroup{
+  display: inline-block;
+}
+
+.subheading {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 45px;
+  /* identical to box height */
+
+  color: #50734F;
+
+  text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+}
+
+#Weather {
+  width: 135px;
+  height: 45px;
+}
+
+#News {
+  text-align: center;
+  margin: 2%;
+}
+
+#Yojanas{
+  text-align: center;
+  margin: 2%;
+}
+
+#Information{
+  text-align: center;
+  margin: 2%;
+}

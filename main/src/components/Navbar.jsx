@@ -13,7 +13,7 @@ export default function Navbar({setLogin}) {
     {name: "sales", link:"/sales"},
     {name: "upload", link:"/upload"},
     {name: "dashboard", link:"/dashboard"},
-    {name: "nearby markets", link:"/products"},
+    {name: "nearby markets", link:"/nearby"},
     {name: "guidlines", link:"/guidlines"},
     {name: "logout", link:"/login"}
   ]
@@ -37,7 +37,7 @@ export default function Navbar({setLogin}) {
             if (e.name === "logout") setLogin(false)
             return(
               <Button color="inherit">
-                <NavLink to={e.link} underline="none">
+                <NavLink to={e.link} underline="none" style={{"textDecoration":"none"}}>
                   <p className="Navbar-text">{e.name}</p>
                 </NavLink>
               </Button>

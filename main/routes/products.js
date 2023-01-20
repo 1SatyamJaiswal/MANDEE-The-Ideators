@@ -92,6 +92,25 @@ router.get("/:category",(req,res)=>{
   }
 });
 
+router.post("/qty",(req,res)=>{
+  try {
+      console.log(req.params);
+      const {category} = req.params
+      connection.query(`UPDATE products SET quantity=${req.body.qty} WHERE pid="${req.body.pid}"`,(err,result)=>{
+          if(err){
+              console.log("error")
+          }else{
+            console.log(result)
+            res.status(201).json({data:{status:'success',info:result}})
+          }
+      })
+      // res.send("received")
+  } catch (error) {
+    console.log(error);
+      res.status(421).json({status:422,error})
+  }
+});
+
 router.get("/u/:id",(req,res)=>{
   try {
       console.log(req.params);
