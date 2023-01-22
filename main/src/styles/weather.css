@@ -1,41 +1,29 @@
-.container{
+.w-container{
     overflow: hidden;
     z-index: 10;
     position: relative;
     margin: 150px auto;
-    height: 90px;
-    width: 300px;
+    height: 100px;
+    width: 350px;
     background-color: #F17022;
     border-radius: 10px;
     box-shadow: 2px 2px 1px rgba(0,0,0,0.2);
 }
 
-.searchWeather {
-    text-align: center;
-    display: inline-block;
-    margin: 0 35%;
-}
-
 .search {
-    box-sizing: border-box;
-    width: 472px;
-    height: 33px;
+    width: 300px;
+    height: 35px;
     border: 1px solid #A0A289;
     border-radius: 20px;
 }
 
 #searchbtn {
-    box-sizing: border-box;
-    width: 94px;
-    height: 33px;
+    width: 90px;
+    height: 35px;
     border: 1px solid #A0A289;
     border-radius: 20px;
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 500;
-    font-size: 13px;
-    line-height: 20px;
-    /* identical to box height */
+    font-size: 15px;
     color: #50734F;
     margin: 20px auto;
 }

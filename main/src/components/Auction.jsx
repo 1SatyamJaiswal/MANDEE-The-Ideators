@@ -24,7 +24,7 @@ marginRight:"20px",
 }));
 
 
-function Auction({name,company,picture,price,location,contact,type,details,profile,setProductlist}) {
+function Auction({name,company,picture,price,location,contact,type,details,profile,setProductlist,quantity}) {
     
 
 
@@ -36,8 +36,7 @@ function Auction({name,company,picture,price,location,contact,type,details,profi
             <div className='product-detail'>
                 <div className='product-title'>{name}, {company}</div> 
                 <div style={{background:"rgba(240, 245, 209, 1)", borderRadius:"10px",padding:"6px"}}>IN AUCTION! ( Current Price: Rs.{details.price}/kg)</div>
-                {/* <div className='product-info'>Rs. {price} per kg</div> */}
-                <div className='product-info'>Up for sale 3hrs ago</div>
+                <div className='product-info'>Quantity: {quantity} kg </div>
                 <div className='product-info'>{location}</div>
                 <div className='product-info'>Contact No: {contact}</div>
                 <div className='product-buttons'>

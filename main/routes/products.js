@@ -95,8 +95,7 @@ router.get("/:category",(req,res)=>{
 router.post("/qty",(req,res)=>{
   try {
       console.log(req.params);
-      const {category} = req.params
-      connection.query(`UPDATE products SET quantity=${req.body.qty} WHERE pid="${req.body.pid}"`,(err,result)=>{
+      connection.query(`UPDATE products SET price=${req.body.price} WHERE pid="${req.body.pid}"`,(err,result)=>{
           if(err){
               console.log("error")
           }else{

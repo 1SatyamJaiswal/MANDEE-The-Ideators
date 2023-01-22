@@ -3,7 +3,7 @@
     width: 300px;
     border: solid 3px hsl(65, 67%, 56%);
     border-radius: 10px;
-    margin: 5px 10px;
+    margin: 50px 10px;
     text-align: center;
 }
 
@@ -15,10 +15,9 @@
 
 .farmer-image{
     place-content: center;
-    box-shadow: 
-    rgba(93, 136, 92, 1) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    object-fit: cover;
     border-radius: 100%;
-    width: 230px;
+    width: 180px;
     height: 180px;
 }
 

@@ -1,24 +1,21 @@
-
 .infoPallete1 {
-    position: absolute;
-    top: 2060px;
-    left:130px;
-    font-family: Popins;
-    color: var(--text);
-    padding: 2% 3%;
-    font-size: 20px;
-    background: #FFFFFB;
-border: 1px solid #A0A289;
-border-radius: 20px;
-  }
-  
-  
-  ol {
-    list-style-type: none;
-    
-  }
-  
-  ol li {
-    padding: 4px;
-  }
-  
+  position: absolute;
+  top: 2060px;
+  left: 130px;
+  color: var(--text);
+  padding: 2% 3%;
+  font-size: 20px;
+  background: #fffffb;
+  border: 1px solid #a0a289;
+  border-radius: 20px;
+}
+
+ol {
+  list-style-type: none;
+}
+
+ol li {
+  padding: 4px;
+}
+
+

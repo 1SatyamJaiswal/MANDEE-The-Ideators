@@ -47,7 +47,7 @@ function Location() {
     <div>
       {location ? (
         <MapContainer
-          center={[30.9157057,75.8257028]}
+          center={[30.9157057, 75.8257028]}
           zoom={12}
           scrollWheelZoom={true}
           style={{ height: "500px", width: "500px" }}
@@ -56,67 +56,31 @@ function Location() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <Marker position={[30.9157057,75.8257028]}>
-            <Popup>
-              Punjab Mandi Board
-            </Popup>
-          </Marker> 
-          <Marker position={[30.9179164,75.8578784]}>
-            <Popup>
-              Ghass Mandi
-            </Popup>
+          <Marker position={[30.9157057, 75.8257028]}>
+            <Popup>Punjab Mandi Board</Popup>
           </Marker>
-          <Marker position={[30.9167423,75.8524598]}>
-            <Popup>
-              Gur Mandi
-            </Popup>
+          <Marker position={[30.9179164, 75.8578784]}>
+            <Popup>Ghass Mandi</Popup>
           </Marker>
-          <Marker position={[30.9243026,75.8412298]}>
-            <Popup>
-              Kesar Ganj Mandi
-            </Popup>
+          <Marker position={[30.9167423, 75.8524598]}>
+            <Popup>Gur Mandi</Popup>
           </Marker>
-          <Marker position={[30.9027274,75.8248498]}>
-            <Popup>
-              Ghumar Mandi
-            </Popup>
+          <Marker position={[30.9243026, 75.8412298]}>
+            <Popup>Kesar Ganj Mandi</Popup>
           </Marker>
-          <Marker position={[30.9109058,75.8867516]}>
-            <Popup>
-              Vardhman Sabji Mandi
-            </Popup>
+          <Marker position={[30.9027274, 75.8248498]}>
+            <Popup>Ghumar Mandi</Popup>
           </Marker>
-          <Marker position={[30.9169575,75.7792684]}>
-            <Popup>
-              Chhoti Puli Sabzi Mandi
-            </Popup>
+          <Marker position={[30.9109058, 75.8867516]}>
+            <Popup>Vardhman Sabji Mandi</Popup>
+          </Marker>
+          <Marker position={[30.9169575, 75.7792684]}>
+            <Popup>Chhoti Puli Sabzi Mandi</Popup>
           </Marker>
         </MapContainer>
       ) : null}
     </div>
   );
-
-  // return (
-  //   <div>
-  //     <MapContainer
-  //       center={{ lat: 51.505, lng: -0.09 }}
-  //       zoom={13}
-  //       scrollWheelZoom={true}
-  //       style={{ height: "500px", width: "500px" }}
-  //     >
-  //       <TileLayer
-  //         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  //         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  //       />
-  //       <LocationMarker />
-  //       <Marker position={[30.9178043, 75.8404551]}>
-  //         <Popup>
-  //           // You are here. <br /> Hello!. //{" "}
-  //         </Popup>
-  //       </Marker>
-  //     </MapContainer>
-  //   </div>
-  // );
 }
 
 export default Location;

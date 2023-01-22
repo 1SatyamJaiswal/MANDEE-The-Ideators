@@ -46,6 +46,8 @@ function Weather() {
       });
   }
 
+
+
   const appid = "370a3a5e715d21a0fcf56723602d0a72";
   const units = "metric";
 
@@ -79,6 +81,19 @@ function Weather() {
   const icon = data1.weather[0].icon;
   const imageUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
+  const crops = ["Rice", "Wheat", "Maize", "Millet", "Bajra", "Pulses"];
+  var cropsgrow = [];
+  if (temp >= 15 && temp <= 27)
+    cropsgrow.push(crops[0]);
+  if (temp >= 12 && temp <= 25)
+    cropsgrow.push(crops[1]);
+  if (temp >= 15 && temp <= 27)
+    cropsgrow.push(crops[2]);
+  if (temp >= 20 && temp <= 35)
+    cropsgrow.push(crops[3]);
+  if (temp >= 25 && temp <= 35)
+    cropsgrow.push(crops[4]);
+
   const date = new Date();
   const showTime =
     date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
@@ -88,19 +103,22 @@ function Weather() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="searchWeather">
+    <div style={{ display: "grid", justifyItems: "center", height: "400px" }}>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Search..."
           value={searchTerm}
           onChange={handleChange}
-        className="search"
-        style={{paddingLeft:"40px"}}
+          className="search"
+          style={{ paddingLeft: "40px" }}
         />
-        <button type="submit" id="searchbtn">Search</button>
-      </form>
-      <div className="container" >
+        <button type="submit" id="searchbtn">
+          Search
+        </button>
+      </form >
+
+      <div className="w-container" style={{"marginTop":"20px"}}>
         <div className="background">
           <div className="Circle1"></div>
           <div className="Circle2"></div>
@@ -121,8 +139,18 @@ function Weather() {
             <Clock />
             <h1 className="Location">{data1.name}</h1>
           </div>
+
         </div>
+        
       </div>
+      <div className="crops" style={{ border: "2px solid green", "borderRadius": "17px", "padding": "20px", "marginTop": "-90px", "width": "400px" }}>
+          <div className="crophead">Crops that should be grown in this weather:</div>
+          {/* <div className="cropscard"> */}
+          {cropsgrow.map((cropsgrow) => (
+            <span key={cropsgrow} id="list-item" >{cropsgrow}, </span>
+          ))}
+          {/* </div>   */}
+        </div>
     </div>
   );
 }

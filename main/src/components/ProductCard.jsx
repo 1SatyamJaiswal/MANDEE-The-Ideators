@@ -23,7 +23,7 @@ marginRight:"20px",
 }));
 
 
-function ProductCard({name,company,picture,price,location,contact,type,details,profile,setProductlist}) {
+function ProductCard({name,company,picture,price,location,contact,type,details,profile,setProductlist,quantity}) {
     
 
 
@@ -35,7 +35,7 @@ function ProductCard({name,company,picture,price,location,contact,type,details,p
             <div className='product-detail'>
                 <div className='product-title'>{name}, {company}</div> 
                 <div className='product-info'>Rs. {price} per kg</div>
-                <div className='product-info'>Up for sale 3hrs ago</div>
+                <div className='product-info'>Quantity availaible: {quantity} kg</div>
                 <div className='product-info'>{location}</div>
                 <div className='product-info'>Contact No: {contact}</div>
                 <div className='product-buttons'>

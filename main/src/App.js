@@ -7,15 +7,24 @@ import Upload from './pages/Upload';
 import Guidelines from './pages/Guidelines';
 import './styles/App.css';
 import { Route, Routes, NavLink, Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react';
-import Sales from './pages/Sales1';
+import { useState,useEffect } from 'react';
+import Sales from './pages/Sales';
 import DashboardB from './pages/DashboardB';
 import Nearby from './pages/Nearby';
 import Footer from './components/Footer';
 import CommoditiesData from './pages/CommoditiesData';
+import Landing from './pages/Landing';
 
 
 function App() {
+  useEffect(() => {
+    // if(localStorage.getItem("login")) {
+    //   setProfile(localStorage.getItem("profile"))
+    //   setLogin(true)
+    // }
+  
+  }, [])
+  
   const [type, setType] = useState(0) // 0-farmer 1-buyer
   const [login, setLogin] = useState(false) 
   const [ search,setSearch ] = useState('');
@@ -35,7 +44,7 @@ function App() {
 
   return (
     <div className="App">
-      {profile.uid != 0?<Navbar setLogin={setLogin}/>:null}
+      {profile.uid != 0?<Navbar setLogin={setLogin} setProfile={setProfile} profile={profile.profile}/>:null}
       {/* <Products/> */}
       {/* <Dashboard/> */}
       {/* <Upload/> */}
@@ -47,11 +56,12 @@ function App() {
         <Route path='/upload' element={<Upload type={type} profile={profile}/>}/>
         <Route path='/register' element={<Register  login={login} setLogin={setLogin} profile={profile} setProfile={setProfile}/>}/>
         <Route path='/login' element={<Login login={login} setLogin={setLogin} setProfile={setProfile}/>}/>
-        <Route path='/guidlines' element={<Guidelines/>}/>
+        <Route path='/guidelines' element={<Guidelines/>}/>
         <Route path='/products' element={<Products setSearch={setSearch} search={search} profile={profile}/>}/>
         <Route path='/sales' element={<Sales setSearch={setSearch} search={search}/>}/>
         <Route path='/nearby' element={<Nearby/>}/>
         <Route path='/livemarket' element={<CommoditiesData/>}/>
+        <Route path='/home' element={<Landing/>}/>
       </Routes>
       {login?<Footer/>:null}
     </div>

@@ -20,10 +20,12 @@ export default function Register({login,setLogin,setProfile}) {
                         console.log("hello",res);
             if (res.data.data.status === 'fail') alert('incorrect credentials')
             else {
-                console.log(res.data.data.info);
+                console.log("whyyyy",res.data.data.info,'profile');
                 setProfile(res.data.data.info)
-                nav('/dashboard')
+                nav('/home')
                 setLogin(true)
+                localStorage.setItem("login",true)
+                localStorage.setItem("profile",res.data.data.info)
             }
         })
         console.log(email,password)
@@ -31,7 +33,7 @@ export default function Register({login,setLogin,setProfile}) {
     }
 
     return (
-        <div>
+        <div style={{marginTop:"90px"}}>
             <div className="registerForm" style={{ "border": "2px solid #A0A189", "borderRadius": "10px" }}>
                 <form>
                     <Stack spacing={10} direction="row" justifyContent={"center"} alignItems={"center"}>
@@ -48,7 +50,7 @@ export default function Register({login,setLogin,setProfile}) {
                                 </div>
                             </Stack>
                         </div>
-                        <div className="loginImage"></div>
+                        <div className="loginImage"style={{width:"40%",margin:"10% 3% 7%",marginLeft:"80px"}}></div>
                     </Stack>
                     <p className="alreadyRegistered">Already have an account?<Link to="/register"> Register</Link></p>
                     <Button color="inherit" onClick={submit}

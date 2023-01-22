@@ -55,10 +55,10 @@ function DashboardB({profile,setProfile}) {
         </div>
 
         <div className="profile">
-          {profile.picture?<img src={require(`../uploads/${profile.picture}`)} clasnsName='profile-img' style={profilepic}/>:null}
+          {profile.picture?<img src={require(`../uploads/${profile.picture}`)} className='profile-img' style={profilepic}/>:null}
           <div className="profile-details">
             <div className='profile-info'>Name: {profile.name}</div>
-            <div className='profile-info'>Company Name: {profile.compay}</div> 
+            <div className='profile-info'>Company Name: {profile.company}</div> 
             <div className='profile-info'>Contact No: {profile.contact}</div>
             <div className='profile-info'>Mail: {profile.email}</div>
             <div className='profile-info'>Current Rating: {profile.rating}</div>
@@ -76,8 +76,20 @@ function DashboardB({profile,setProfile}) {
         <div className="bold-text"><h1> Items Purcheased </h1></div>
         <div className="sales">
           {saleList?saleList.map(e => {
-              return <SalesCard deal={e}/>
+              return e.type == 1 || e.type == null?  <SalesCard deal={e} profile={profile}/>:null
           }):<h3 style={{color:"green",marginLeft:"130px"}}> No Sales yet</h3>} 
+          {/* <SalesCard/>
+          <SalesCard/>
+          <SalesCard/> */}
+
+        </div>
+
+        <div className="bold-text"><h1> Items Bid </h1></div>
+        <div className="sales">
+          {saleList?saleList.map(e => {
+            console.log(saleList.type,"type",saleList)
+              return e.type === 0 ?  <SalesCard deal={e} profile={profile}/>:null
+          }):<h3 style={{color:"green",marginLeft:"130px"}}> No Bids yet</h3>} 
           {/* <SalesCard/>
           <SalesCard/>
           <SalesCard/> */}

@@ -65,11 +65,11 @@ function Upload({profile}) {
     }
 
     return (
-        <div className="Upload">
+        <div className="Upload" style={{marginBottom:"60px"}}>
             {/* <Navbar /> */}
             <div className="Message">
                 <Typography variant="h2" className="largeHeading">Upload your Crop!</Typography>
-                <Typography variant="p" className="mediumHeading">Upload your Crops on -- to get the best Buyers and Results</Typography>
+                <Typography variant="p" className="mediumHeading" style={{marginLeft:"6px"}}>Upload your Crops here to get the best Buyers and Results</Typography>
             </div>
             <div className="uploadForm" style={{ "border": "2px solid #A0A189", "borderRadius": "10px" }}>
                 <form>

@@ -4,7 +4,7 @@ const connection = require("../db/connection");
 
 // register userdata
 router.route('/').post((req,res)=>{
-  const {revenue,picture,quantity,bid,fid,price} = req.body;
+  const {revenue,picture,quantity,bid,fid,price,name,type} = req.body;
 
   console.log(req.body,'deal');
 
@@ -12,13 +12,15 @@ router.route('/').post((req,res)=>{
       
       connection.query("INSERT INTO deals SET ?",
         {
-           picture:picture,
+          picture:picture,
           price:price,
           quantity: quantity,
           date: new Date().toUTCString(),
           fid:fid,
           bid:bid,
-          revenue:revenue
+          revenue:revenue,
+          name:name,
+          type:type
         },(err,result)=>{
           if(err){
               console.log(err)
@@ -59,18 +61,16 @@ router.get("/:category",(req,res)=>{
 
 router.get("/u/:id",(req,res)=>{
   try {
-      // console.log(req.params);
-      const {id} = req.params
-      console.log('ll',id);
-      connection.query(`SELECT * FROM deals WHERE fid=${id}`,(err,result)=>{
-          if(err){
-              console.log("error")
-          }else{
-            console.log(result)
-            res.status(201).json({data:{status:'success',info:result}})
-          }
-      })
-      // res.send("received")
+    const {id} = req.params
+    console.log('ll',id);
+    connection.query(`SELECT * FROM deals WHERE fid=${id}`,(err,result)=>{
+      if(err){
+          console.log("error")
+      }else{
+        console.log(result)
+        res.status(201).json({data:{status:'success',info:result}})
+      }
+    })
   } catch (error) {
     console.log(error);
       res.status(421).json({status:422,error})
@@ -79,21 +79,18 @@ router.get("/u/:id",(req,res)=>{
 
 router.get("/b/:id",(req,res)=>{
   try {
-      // console.log(req.params);
-      const {id} = req.params
-      console.log('ll',id);
-      connection.query(`SELECT * FROM deals WHERE bid=${id}`,(err,result)=>{
-          if(err){
-              console.log("error")
-          }else{
-            console.log(result)
-            res.status(201).json({data:{status:'success',info:result}})
-          }
-      })
-      // res.send("received")
+    const {id} = req.params
+    console.log('ll',id);
+    connection.query(`SELECT * FROM deals WHERE bid=${id}`,(err,result)=>{
+      if(err) console.log("error")
+      else{
+        console.log(result)
+        res.status(201).json({data:{status:'success',info:result}})
+      }
+    })
   } catch (error) {
     console.log(error);
-      res.status(421).json({status:422,error})
+    res.status(421).json({status:422,error})
   }
 });
 

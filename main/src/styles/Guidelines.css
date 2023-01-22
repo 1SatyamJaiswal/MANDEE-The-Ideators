@@ -53,16 +53,12 @@
 }
 
 .subheading {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 40px;
+  font-weight: 500;
+  font-size: 50px;
   line-height: 45px;
-  /* identical to box height */
-
   color: #50734F;
-
   text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  margin-bottom: 10px;
 }
 
 #Weather {
@@ -83,4 +79,70 @@
 #Information{
   text-align: center;
   margin: 2%;
+}
+
+/* ****************** */
+
+.G-Models{
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+.G-Sales{
+  scroll-snap-align: start;
+}
+
+.G-Sales:nth-child(1){
+  background-attachment: fixed;
+}
+.G-Sales:nth-child(2){
+  background-attachment: fixed;
+}
+.G-Sales:nth-child(3){
+  background-attachment: fixed;
+}
+.G-Sales:nth-child(4){
+  background-attachment: fixed;
+}
+.G-Sales:nth-child(5){
+  background-attachment: fixed;
+}
+
+
+.G-Weather{
+  padding: 50px 0px;
+  text-align: center;
+  border: solid 2px #5D885C;
+  border-radius: 5%;
+  margin: 200px auto;
+  width: 500px;
+}
+
+.G-News{
+  padding: 30px 0px;
+  text-align: center;
+  border: solid 2px #5D885C;
+  border-radius: 1%;
+  margin: 40px 40px;
+}
+
+.G-Yojanas{
+  padding: 30px 0px;
+  width: 700px;
+  border: solid 2px #5D885C;
+  margin: 0px auto 50px auto;
+  text-align: center;
+  border-radius: 1%;
+}
+
+.G-Info{
+  padding: 30px 0px;
+  width: 700px;
+  border: solid 2px #5D885C;
+  margin: 70px auto;
+  text-align: center;
+  border-radius: 1%;
 }

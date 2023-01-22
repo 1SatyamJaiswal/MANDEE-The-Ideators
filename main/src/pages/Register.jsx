@@ -77,7 +77,7 @@ export default function Register({login,setLogin,setProfile,profile}) {
     return (
         <div>
             {/* {file?<img src={URL.createObjectURL(file)} alt="" />:null} */}
-            <div className="registerForm" style={{ "border": "2px solid #A0A189", "borderRadius": "10px" }}>
+            <div className="registerForm" style={{ "border": "2px solid #A0A189", "borderRadius": "10px" ,marginTop:"90px"}}>
                 <form>
                     <Stack spacing={10} direction="row" justifyContent={"space-evenly"} alignItems={"center"}>
                         <div>
@@ -85,15 +85,15 @@ export default function Register({login,setLogin,setProfile,profile}) {
                             <Stack spacing={2}>
                                 <div>
                                     <p className="registerText">Name</p>
-                                    <TextField name="name" onChange={(e) => setName(e.target.value) } variant="filled" style={{ "border": "2px solid #A0A189", "borderRadius": "20px", "width": "100%" }} />
+                                    <TextField name="name" onChange={(e) => setName(e.target.value) } variant="filled" style={{ "border": "2px solid #A0A189", "borderRadius": "20px", "width": "100%" }} type="text"/>
                                 </div>
                                 <div>
                                     <p className="registerText">Email</p>
-                                    <TextField name="email" type="email" onChange={(e) => setEmail(e.target.value)} style={{ "border": "2px solid #A0A189", "borderRadius": "20px", "width": "100%" }} />
+                                    <TextField name="email" type="email" onChange={(e) => setEmail(e.target.value)} style={{ "border": "2px solid #A0A189", "borderRadius": "20px", "width": "100%" }}/>
                                 </div>
                                 <div>
                                     <p className="registerText">Phone</p>
-                                    <TextField name="phone" type="tel" onChange={(e) => setPhone(e.target.value)} variant="filled" style={{ "border": "2px solid #A0A189", "borderRadius": "20px", "width": "100%" }} />
+                                    <TextField name="phone" type="number" onChange={(e) => setPhone(e.target.value)} variant="filled" style={{ "border": "2px solid #A0A189", "borderRadius": "20px", "width": "100%" }} />
                                 </div>
                                 <div>
                                     <p className="registerText">Password</p>
@@ -104,14 +104,14 @@ export default function Register({login,setLogin,setProfile,profile}) {
                         <div>
                         <div>
                         <Stack alignItems="center" spacing={2} className="uploadPersonalImage">
-                        <IconButton aria-label="upload picture" component="label" style={{"color":"#50734F"}}>
-                        <input hidden onChange={setimgfile} accept="image/*" type="file"name="photo" />
-                        <AddAPhotoIcon />
-                        </IconButton>
-                        <Button variant="contained" component="label" color="inherit" style={{"backgroundColor": "#F0F5D1","width": "100%","margin":"20px", "borderRadius":"20px"}}>
-                        <p className='registerTextImage'>Your Image</p>
-                        <input hidden onChange={setimgfile} accept="image/*" type="file" name="photo"/>
-                        </Button>
+                            <IconButton aria-label="upload picture" component="label" style={{"color":"#50734F"}}>
+                                <input hidden onChange={setimgfile} accept="image/*" type="file"name="photo" />
+                                <AddAPhotoIcon />
+                            </IconButton>
+                            <Button variant="contained" component="label" color="inherit" style={{"backgroundColor": "#F0F5D1","width": "100%","margin":"20px", "borderRadius":"20px"}}>
+                                <p className='registerTextImage'>Your Image</p>
+                                <input hidden onChange={setimgfile} accept="image/*" type="file" name="photo"/>
+                            </Button>
                         </Stack>
                         <Stack spacing={2}>
                                 <div>

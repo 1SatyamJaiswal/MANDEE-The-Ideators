@@ -56,10 +56,12 @@ export default function Buy({price,details,profile,setProductlist}) {
     let temp = {
       fid:details.fid,
       bid:profile.uid,
+      name:profile.company,
       quantity:quantity,
       picture: details.picture,
       price: price,
       revenue: quantity*price,
+      type:1
     }
     axios.post('http://localhost:4000/deals',temp)
     axios.post(`http://localhost:4000/products/qty`,{qty:(details.quantity-quantity),pid:details.pid})

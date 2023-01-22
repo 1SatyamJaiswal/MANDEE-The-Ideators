@@ -49,7 +49,7 @@ export default function Sort() {
   const handleClose = () => setOpen(false);
 
   return (
-    <div style={{display:"inline-block"}}>
+    <div style={{display:"inline-block","width":"300px"}}>
       <ColorButton onClick={handleOpen}>Sort By</ColorButton>
       <Modal
         open={open}

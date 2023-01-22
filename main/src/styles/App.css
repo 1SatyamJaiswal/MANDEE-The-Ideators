@@ -4,10 +4,14 @@
   font-family: Poppins;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
 :root {
   --light : #eee;
   --text : #50734F;
-  --border : #A0A189
+  --border : #A0A189;
+  --logo: rgb(219, 237, 173);
 }
 
 .Navbar {

@@ -55,15 +55,18 @@ const Products = ({search,setSearch,profile}) => {
   return (
     <div className='main'>
         <div className='text-above-search'>Find what you Need!</div>
-        <div className='search'>
+        <div style={{display:"flex"}}>
+        <div className='search' style={{border:"none"}}>
           <Search setSearch={setSearch}/>
-          <div className="buttton-group">
-            <ColorButton variant="outlined" >Category</ColorButton>
-            <ColorButton variant="outlined" >Location</ColorButton>
-            <ColorButton variant="outlined" onClick={submit}>Submit</ColorButton>
+          </div>
+
+          <div className="buttton-group" style={{display:"flex","marginTop":"25px"}}>
+            {/* <ColorButton variant="outlined" >Category</ColorButton>
+            <ColorButton variant="outlined" >Location</ColorButton> */}
+            <ColorButton variant="outlined" onClick={submit} style={{width:"100px","height":"42px"}}>Submit</ColorButton>
             <Sort/>
           </div>
-        </div>
+          </div>
         <div className='product-list'>
           {/* <ProductCard/>
           <ProductCard/>
@@ -73,8 +76,8 @@ const Products = ({search,setSearch,profile}) => {
           <ProductCard/> */}
           {productlist? productlist.map(e => {
             let x = null
-            if (e.mode == 0) x = <Auction name={e.name} price={e.price} company={e.company} contact={e.contact} picture={e.picture} type={1} details={e} profile={profile} setProductlist={setProductlist}/>
-            else x = <ProductCard name={e.name} price={e.price} company={e.company} contact={e.contact} picture={e.picture} type={1} details={e} profile={profile} setProductlist={setProductlist}/>
+            if (e.mode == 0) x = <Auction name={e.name} price={e.price} company={e.company} contact={e.contact} picture={e.picture} type={1} details={e} profile={profile} setProductlist={setProductlist} quantity={e.quantity}/>
+            else x = <ProductCard name={e.name} price={e.price} company={e.company} contact={e.contact} picture={e.picture} type={1} details={e} profile={profile} setProductlist={setProductlist} quantity={e.quantity}/>
             if (e.quantity > 0)
               return (x)
           }):null}
