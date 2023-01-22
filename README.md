@@ -3,3 +3,5 @@ MANDEE is a platform that connects the FARMERS with the RETAILERS directly witho
 2. Nearby Markets
 3. Guidelines Page
 You can login both as AS Farmer and as Buyer
+-By the IDEATORS
+(Komal Tarachandani, Siddhant Rao, Satyam Jaiswal and Vikas Rajpurophit)
