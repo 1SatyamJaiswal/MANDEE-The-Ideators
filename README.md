@@ -15,3 +15,4 @@ To Run the webapp: (make sure you have nodejs and mysql installed)
   6. use the command 'npm run devStart' to start the backend
   7. use the command 'npm run start' to start the backend.
 # MANDEE-The-Ideators
+# MANDEE-The-Ideators
